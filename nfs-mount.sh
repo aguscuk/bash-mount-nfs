@@ -8,16 +8,10 @@ dest=${dest%/}
 
 ISMOUNTED=`grep "$dest" /proc/mounts`
 
-if [ "$ISMOUNTED" = "" ] 
+if [ "$ISMOUNTED" = "" ]
 then
-  echo "----------------"
-  echo "Mounting Process"
-  echo "----------------"
-  echo "/bin/mount -t nfs $source $dest"
-  /bin/mount -t nfs $source $dest 
+  sudo /bin/mount -t nfs $source $dest
+  echo "Berhasil di-mounting  : `grep $dest /proc/mounts`"
 else
-  echo "------------------"
-  echo "Already mounted on"
-  echo "------------------"
-  echo "$ISMOUNTED"
+  echo "Sudah di-mounting  : $ISMOUNTED"
 fi
