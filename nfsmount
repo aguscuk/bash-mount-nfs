@@ -1,5 +1,10 @@
 #!/bin/bash
-[ ! -z "$1" ] || echo "cara menggunakan: nfsmount {nfs-server:/share source} {mountpoint destination}" && exit
+
+if [ -z "$1" ]
+then
+  echo "cara menggunakan: nfsmount {nfs-server:/share source} {mountpoint destination}"
+  exit
+fi
 
 source=$1
 source=${source%/}
